@@ -6,3 +6,5 @@ The following may also be of interest
 - https://github.com/mp30028/addressbook-sse-fullstack
 - https://github.com/mp30028/addressbook-sse-api
 - https://github.com/mp30028/addressbook-sse-ui
+
+2. Setup Postman to listen to the events over websocket
