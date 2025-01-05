@@ -1,0 +1,37 @@
+
+services:
+
+  addressbook-mysql-db:
+    container_name: addressbook-mysql-db
+    image: mysql:8.0.33
+    command: --default-authentication-plugin=mysql_native_password
+    stdin_open: false
+    tty: false
+    environment:
+      MYSQL_ROOT_PASSWORD: R007*Password
+      MYSQL_DATABASE: addressbook_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: U5erPa55word
+      MYSQL_TCP_PORT: 3311
+    ports:
+       - 3311:3311
+    volumes:
+      - type: bind      
+        source: ./data-files
+        target: /var/lib/mysql
+        read_only: false
+      - type: bind
+        source: ./initdb.sql
+        target: /docker-entrypoint-initdb.d/initdb.sql
+        read_only: true
+    healthcheck:
+        test: "mysql addressbook_db -udb_user -pU5erPa55word --port=3311 -e 'SELECT 1;'"
+        timeout: 20s
+        retries: 10
+    networks:
+      - wsnet
+
+networks:
+  wsnet:
+  
+  #mysqlsh -u root -pR007*Password --port=3311
