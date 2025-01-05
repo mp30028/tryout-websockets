@@ -1,0 +1,131 @@
+@charset "ISO-8859-1";
+
+h1   {color: black;}
+
+table {
+	border-style: solid;
+	border-width: 1pt;
+	border-color: black;
+	font-family: Arial;
+	font-size: 9pt;
+  	width: 90%;
+	
+}
+
+table input{
+	border-style: none;
+}
+
+table th.id{
+	background-color: #575757;
+	color: white;
+	font-weight: bold;
+}
+
+
+td {
+	border-style: solid;
+	border-color: grey;
+	border-width: 1pt;
+}
+
+td.subtableContainer{
+	border-style: none;
+}
+
+
+
+th {
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+
+table.info {
+	border-style: solid;
+	border-width: 1pt;
+	border-color: grey;
+	font-family: Arial;
+	font-size: 9pt;
+  	width: 60%;	
+}
+
+table.info th {
+	background-color: #575757;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+
+table.info td {
+	border-style: none;
+}
+
+
+table.subtable{	
+	width: 100%;
+	border-style: none;
+}
+
+table.subtable td{	
+	border-style: solid;
+	border-color: silver;
+	border-width: 1px;
+}
+
+
+.ellipsesButton {font-weight: 600;}
+
+table.subtable td.buttonCell{
+	border-style: dashed;
+	text-align: center;
+}
+
+td.buttonCell button.deleteButton{
+	background-image: url(../icons/delete.svg);
+	background-size: cover;
+	background-color: white;
+	height: 20px;
+	width: 50px;
+	border: none;
+}
+
+td.buttonCell button.deleteButton:hover{
+	background-image: url(../icons/delete_onhover.svg);
+	background-size: cover;
+	background-color: #d2d2d2;
+	height: 20px;
+	width: 50px;
+	border: none;
+}
+
+td.buttonCell button.addNewButton{
+	background-image: url(../icons/addnew.svg);
+	background-size: cover;
+	background-color: white;
+	height: 30px;
+	width: 50px;
+	border: none;
+}
+
+td.buttonCell button.addNewButton:hover{
+	background-image: url(../icons/addnew_onhover.svg);
+	background-size: cover;
+	background-color: silver;
+	height: 30px;
+	width: 50px;
+	border: none;
+}
+
+.centeredPanel{
+  color: white;
+  background: rgb(255, 255, 255);
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
