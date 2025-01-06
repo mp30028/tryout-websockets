@@ -8,3 +8,7 @@ The following may also be of interest
 - https://github.com/mp30028/addressbook-sse-ui
 
 2. Setup Postman to listen to the events over websocket
+
+3. Create an html page to react and display events sent over the websocker
+
+4. Create a simple app with notes to explain how websockets can be implemented and used from scratch
