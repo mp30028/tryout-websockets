@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		const url = "ws://localhost:8080/websockets/events";
+		const url = "ws://localhost:7002/websockets/events";
 		const protocols = null;
 		var socket = new ReconnectingWebSocket(url, protocols, {debug: true, reconnectInterval: 3000});
 // 		'debug: true' ===> messages are printed to console.debug()
