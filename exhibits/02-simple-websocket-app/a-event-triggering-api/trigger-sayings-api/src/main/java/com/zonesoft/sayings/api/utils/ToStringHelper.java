@@ -1,4 +1,4 @@
-package com.zonesoft.ticker.api.utils;
+package com.zonesoft.sayings.api.utils;
 
 import java.util.List;
 import java.util.Objects;

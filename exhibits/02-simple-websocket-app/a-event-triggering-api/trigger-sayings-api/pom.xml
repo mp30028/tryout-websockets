@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zonesoft.tryouts</groupId>
-	<artifactId>ticker-api</artifactId>
+	<artifactId>trigger-sayings-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ticker-api</name>
-	<description>A simple Time Ticker application that publishes events over websockets.</description>	
+	<name>trigger-sayings-api</name>
+	<description>A simple API application that publishes events over websockets when triggered over the web.</description>	
 	<properties>
 		<java.version>21</java.version>
 	</properties>

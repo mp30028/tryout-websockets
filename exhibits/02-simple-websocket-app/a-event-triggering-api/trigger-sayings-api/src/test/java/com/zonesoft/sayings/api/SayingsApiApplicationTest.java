@@ -1,10 +1,10 @@
-package com.zonesoft.ticker.api;
+package com.zonesoft.sayings.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TickerApiApplicationTest {
+class SayingsApiApplicationTest {
 
 	@Test
 	void contextLoads() {

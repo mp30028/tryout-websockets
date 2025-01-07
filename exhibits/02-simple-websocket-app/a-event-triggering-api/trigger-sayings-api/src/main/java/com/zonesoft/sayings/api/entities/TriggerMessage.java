@@ -1,17 +1,17 @@
-package com.zonesoft.ticker.api.entities;
+package com.zonesoft.sayings.api.entities;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import com.zonesoft.ticker.api.utils.ToStringHelper;
+import com.zonesoft.sayings.api.utils.ToStringHelper;
 
 
-public class TickMessage {
+public class TriggerMessage {
 	private ZonedDateTime sentAt;
 	private String sender;
 	private String message;
 	
-	public TickMessage(String sender, String message) {
+	public TriggerMessage(String sender, String message) {
 		super();
 		this.sentAt = ZonedDateTime.now(ZoneId.of("UTC"));
 		this.sender = sender;
