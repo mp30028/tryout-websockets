@@ -1,4 +1,4 @@
-package com.zonesoft.ticker.api.utils;
+package com.zonesoft.sayings.api.utils;
 
 public class Sayings {
 	

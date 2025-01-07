@@ -1,4 +1,4 @@
-package com.zonesoft.ticker.api.controllers;
+package com.zonesoft.sayings.api.controllers;
 
 import java.util.Map;
 
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zonesoft.ticker.api.entities.TickMessage;
-import com.zonesoft.ticker.api.events.TickEvent;
-import com.zonesoft.ticker.api.utils.Sayings;
+import com.zonesoft.sayings.api.entities.TriggerMessage;
+import com.zonesoft.sayings.api.events.TriggerEvent;
+import com.zonesoft.sayings.api.utils.Sayings;
 
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/ticker")
+@RequestMapping("/sayings")
 public class ApiController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);	
@@ -34,18 +34,18 @@ public class ApiController {
 	}
 		
 	@GetMapping
-	public Mono<ResponseEntity<TickMessage>> getMessage(){
+	public Mono<ResponseEntity<TriggerMessage>> getMessage(){
 		String sender = "Dummy";
 		String message = String.join(": ", getSaying());  
-		TickMessage msg = new TickMessage(sender, message);
+		TriggerMessage msg = new TriggerMessage(sender, message);
 		return Mono.just(ResponseEntity.ok().body(msg));
 	}
 	
 	@PutMapping
-	public Mono<ResponseEntity<TickEvent>> triggerEvent(@RequestBody String json) throws JsonMappingException, JsonProcessingException{		
+	public Mono<ResponseEntity<TriggerEvent>> triggerEvent(@RequestBody String json) throws JsonMappingException, JsonProcessingException{		
 		String message = String.join(": ", getSaying());
-		TickMessage tmsg = new TickMessage(getSenderFromJson(json), message);
-		TickEvent event = new TickEvent(tmsg);		
+		TriggerMessage tmsg = new TriggerMessage(getSenderFromJson(json), message);
+		TriggerEvent event = new TriggerEvent(tmsg);		
 		this.publisher.publishEvent(event);	
 		LOGGER.debug("Event published {}", event);
 		return Mono.just(ResponseEntity.ok().body(event));		

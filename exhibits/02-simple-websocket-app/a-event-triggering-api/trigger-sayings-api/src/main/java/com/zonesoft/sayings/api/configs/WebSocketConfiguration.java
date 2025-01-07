@@ -1,8 +1,4 @@
-package com.zonesoft.ticker.api.configs;
-
-import com.zonesoft.ticker.api.entities.TickMessage;
-import com.zonesoft.ticker.api.events.TickEvent;
-import com.zonesoft.ticker.api.events.forwarders.TickEventForwarder;
+package com.zonesoft.sayings.api.configs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +8,11 @@ import org.springframework.web.reactive.HandlerMapping;
 import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
+
+import com.zonesoft.sayings.api.entities.TriggerMessage;
+import com.zonesoft.sayings.api.events.TriggerEvent;
+import com.zonesoft.sayings.api.events.forwarders.TriggerEventForwarder;
+
 //import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 import reactor.core.publisher.Flux;
 
@@ -45,12 +46,12 @@ public class WebSocketConfiguration {
     }
 
     @Bean
-    public WebSocketHandler webSocketHandler(TickEventForwarder eventPublisher) {
+    public WebSocketHandler webSocketHandler(TriggerEventForwarder eventPublisher) {
     	LOGGER.debug("-----------  WebSocketHandler Bean invoked ----------------- ");
-        Flux<TickEvent> publish = Flux.create(eventPublisher).share();
+        Flux<TriggerEvent> publish = Flux.create(eventPublisher).share();
         return session -> {		
             Flux<WebSocketMessage> messageFlux = publish.map(evt -> {
-                    TickMessage source = (TickMessage) evt.getSource();
+                    TriggerMessage source = (TriggerMessage) evt.getSource();
                     return source.toString();
             }).map(message -> {
             	LOGGER.info("----  WebSocketHandler about to send following message ---- \n{}\n", message);

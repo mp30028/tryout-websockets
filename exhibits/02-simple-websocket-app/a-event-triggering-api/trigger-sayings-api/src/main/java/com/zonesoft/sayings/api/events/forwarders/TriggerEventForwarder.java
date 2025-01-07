@@ -1,4 +1,4 @@
-package com.zonesoft.ticker.api.events.forwarders;
+package com.zonesoft.sayings.api.events.forwarders;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -12,35 +12,35 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
-import com.zonesoft.ticker.api.events.TickEvent;
+import com.zonesoft.sayings.api.events.TriggerEvent;
 
 import reactor.core.publisher.FluxSink;
 
 @Component
-public class TickEventForwarder implements ApplicationListener<TickEvent>, Consumer<FluxSink<TickEvent>>{
-	private static final Logger LOGGER = LoggerFactory.getLogger(TickEventForwarder.class);
-    private final BlockingQueue<TickEvent> queue = new LinkedBlockingQueue<>();	
+public class TriggerEventForwarder implements ApplicationListener<TriggerEvent>, Consumer<FluxSink<TriggerEvent>>{
+	private static final Logger LOGGER = LoggerFactory.getLogger(TriggerEventForwarder.class);
+    private final BlockingQueue<TriggerEvent> queue = new LinkedBlockingQueue<>();	
     private final Executor executor;
     
     @Autowired
-	public TickEventForwarder(Executor executor) {
+	public TriggerEventForwarder(Executor executor) {
 		this.executor = executor;
 	}
     
     
 	@Override
-	public void onApplicationEvent(TickEvent event) {
+	public void onApplicationEvent(TriggerEvent event) {
 		LOGGER.debug("Event recieved by onApplicationEvent Listener. event={}", event);
 		this.queue.offer(event);		
 	}
 
 	@Override
-	public void accept(FluxSink<TickEvent> sink) {
+	public void accept(FluxSink<TriggerEvent> sink) {
 		LOGGER.debug("From accept");
 		this.executor.execute(() -> {
 			while (true)
 				try {
-					TickEvent event = queue.take();
+					TriggerEvent event = queue.take();
 					sink.next(event);
 				} catch (InterruptedException e) {
 					ReflectionUtils.rethrowRuntimeException(e);
