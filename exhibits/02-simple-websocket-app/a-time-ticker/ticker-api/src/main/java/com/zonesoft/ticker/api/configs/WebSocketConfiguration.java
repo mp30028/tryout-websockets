@@ -12,7 +12,7 @@ import org.springframework.web.reactive.HandlerMapping;
 import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
-import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
+//import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 import reactor.core.publisher.Flux;
 
 import java.util.Collections;
@@ -45,11 +45,6 @@ public class WebSocketConfiguration {
     }
 
     @Bean
-    public WebSocketHandlerAdapter webSocketHandlerAdapter() {
-        return new WebSocketHandlerAdapter();
-    }
-
-    @Bean
     public WebSocketHandler webSocketHandler(TickEventForwarder eventPublisher) {
     	LOGGER.debug("-----------  WebSocketHandler Bean invoked ----------------- ");
         Flux<TickEvent> publish = Flux.create(eventPublisher).share();
@@ -58,11 +53,16 @@ public class WebSocketConfiguration {
                     TickMessage source = (TickMessage) evt.getSource();
                     return source.toString();
             }).map(message -> {
-            	LOGGER.info("-----------  WebSocketHandler about to send following message ----------------- \n{}\n", message);
+            	LOGGER.info("----  WebSocketHandler about to send following message ---- \n{}\n", message);
                 return session.textMessage(message);
             });
             return session.send(messageFlux);
         };
     }
 
+//  @Bean
+//  public WebSocketHandlerAdapter webSocketHandlerAdapter() {
+//      return new WebSocketHandlerAdapter();
+//  }
+    
 }
