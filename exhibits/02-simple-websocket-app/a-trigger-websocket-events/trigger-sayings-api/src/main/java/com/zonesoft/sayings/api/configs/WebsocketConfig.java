@@ -9,9 +9,9 @@ import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 
-import com.zonesoft.sayings.api.entities.TriggerMessage;
-import com.zonesoft.sayings.api.events.TriggerEvent;
-import com.zonesoft.sayings.api.events.forwarders.TriggerEventForwarder;
+import com.zonesoft.sayings.api.entities.MessageEventContent;
+import com.zonesoft.sayings.api.event_marshallers.MessageEventMarshall;
+import com.zonesoft.sayings.api.events.MessageEvent;
 
 //import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 import reactor.core.publisher.Flux;
@@ -22,8 +22,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 @Configuration
-public class WebSocketConfiguration {
-	private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketConfiguration.class);
+public class WebsocketConfig {
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebsocketConfig.class);
 	
     @Bean
     public Executor executor() {
@@ -46,12 +46,12 @@ public class WebSocketConfiguration {
     }
 
     @Bean
-    public WebSocketHandler webSocketHandler(TriggerEventForwarder eventPublisher) {
+    public WebSocketHandler webSocketHandler(MessageEventMarshall eventPublisher) {
     	LOGGER.debug("-----------  WebSocketHandler Bean invoked ----------------- ");
-        Flux<TriggerEvent> publish = Flux.create(eventPublisher).share();
+        Flux<MessageEvent> publish = Flux.create(eventPublisher).share();
         return session -> {		
             Flux<WebSocketMessage> messageFlux = publish.map(evt -> {
-                    TriggerMessage source = (TriggerMessage) evt.getSource();
+                    MessageEventContent source = (MessageEventContent) evt.getSource();
                     return source.toString();
             }).map(message -> {
             	LOGGER.info("----  WebSocketHandler about to send following message ---- \n{}\n", message);

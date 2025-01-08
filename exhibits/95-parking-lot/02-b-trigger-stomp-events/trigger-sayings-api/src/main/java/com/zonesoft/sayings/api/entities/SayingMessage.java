@@ -6,16 +6,16 @@ import java.time.ZonedDateTime;
 import com.zonesoft.sayings.api.utils.ToStringHelper;
 
 
-public class TriggerMessage {
+public class SayingMessage {
 	private ZonedDateTime sentAt;
 	private String sender;
-	private String message;
+	private Saying saying;
 	
-	public TriggerMessage(String sender, String message) {
+	public SayingMessage(String sender, Saying saying) {
 		super();
 		this.sentAt = ZonedDateTime.now(ZoneId.of("UTC"));
 		this.sender = sender;
-		this.message = message;		
+		this.saying = saying;		
 	}
 
 	public ZonedDateTime getSentAt() {
@@ -30,12 +30,12 @@ public class TriggerMessage {
 		this.sender = sender;
 	}
 
-	public String getMessage() {
-		return message;
+	public Saying getSaying() {
+		return saying;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setSaying(Saying saying) {
+		this.saying = saying;
 	}
 	
 	@Override
@@ -43,7 +43,7 @@ public class TriggerMessage {
 		ToStringHelper helper = new ToStringHelper();
 		return helper.begin()
 			.wrLn("sender", this.sender)
-			.wrLn("message", this.message)
+			.wrLn("saying", this.saying)
 			.wr("sentAt", this.sentAt)
 		.end().build();		
 	}	
