@@ -1,0 +1,82 @@
+services:
+  wsongo-1:
+    container_name: wsongo-1
+    image: mongo:6.0.13
+    command: mongod --keyFile /keys/wsongo.key --bind_ip_all --replSet wsongo_rs
+#    command: mongod --bind_ip_all --replSet wsongo_rs
+    volumes:
+      - ./data-files/data-1:/data/db
+      - ./keys/wsongo.key:/keys/wsongo.key
+    networks:
+      wsongo-network:
+        aliases:
+          - wsongo-1.localhost
+##        ipv4_address: 172.20.0.2
+    ports:
+      - 27017:27017
+    depends_on:
+      - wsongo-2
+    restart: always
+
+  wsongo-2:
+    container_name: wsongo-2
+    image: mongo:6.0.13
+    command: mongod --keyFile /keys/wsongo.key --bind_ip_all --replSet wsongo_rs
+#    command: mongod --bind_ip_all --replSet wsongo_rs
+    volumes:
+      - ./data-files/data-2:/data/db
+      - ./keys/wsongo.key:/keys/wsongo.key
+    networks:
+      wsongo-network:
+        aliases:
+          - wsongo-2.localhost
+##        ipv4_address: 172.20.0.3
+    ports:
+      - 27018:27017
+    restart: always
+
+  init-wsongo-replica-set:
+    container_name: init-wsongo-replica-set
+    image: mongo:6.0.13
+    restart: no
+    depends_on:
+      - wsongo-1
+      - wsongo-2
+    command:
+      - /bin/sh
+      - -c 
+      - | 
+        sleep 5;
+        mongosh --host host.docker.internal:27017 --eval '
+            var db = (new Mongo("wsongo-1:27017")).getDB("test");    
+            var config = { 
+              "_id": "wsongo_rs",
+              "version": 1,
+              "members": [
+                {
+                  "_id": 1,
+                  "host": "wsongo-1:27017",
+                  "priority": 1,
+                },
+                {
+                  "_id": 2,
+                  "host": "wsongo-2:27017",
+                  "priority": 2,
+                }
+             ]
+            };
+            rs.initiate(config, { force: true });
+            //rs.initiate(config);
+            rs.status();
+          ';      
+    networks:
+      wsongo-network:
+
+networks:
+  wsongo-network:
+    name: wsongo-network
+    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 172.20.0.0/16
+#          gateway: 172.20.0.254
