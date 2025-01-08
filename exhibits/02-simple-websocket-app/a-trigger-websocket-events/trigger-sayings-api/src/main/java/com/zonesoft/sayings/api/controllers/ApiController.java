@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zonesoft.sayings.api.entities.TriggerMessage;
-import com.zonesoft.sayings.api.events.TriggerEvent;
+import com.zonesoft.sayings.api.entities.MessageEventContent;
+import com.zonesoft.sayings.api.events.MessageEvent;
 import com.zonesoft.sayings.api.utils.Sayings;
 
 import reactor.core.publisher.Mono;
@@ -34,18 +34,18 @@ public class ApiController {
 	}
 		
 	@GetMapping
-	public Mono<ResponseEntity<TriggerMessage>> getMessage(){
+	public Mono<ResponseEntity<MessageEventContent>> getMessage(){
 		String sender = "Dummy";
 		String message = String.join(": ", getSaying());  
-		TriggerMessage msg = new TriggerMessage(sender, message);
+		MessageEventContent msg = new MessageEventContent(sender, message);
 		return Mono.just(ResponseEntity.ok().body(msg));
 	}
 	
 	@PutMapping
-	public Mono<ResponseEntity<TriggerEvent>> triggerEvent(@RequestBody String json) throws JsonMappingException, JsonProcessingException{		
+	public Mono<ResponseEntity<MessageEvent>> messageEvent(@RequestBody String json) throws JsonMappingException, JsonProcessingException{		
 		String message = String.join(": ", getSaying());
-		TriggerMessage tmsg = new TriggerMessage(getSenderFromJson(json), message);
-		TriggerEvent event = new TriggerEvent(tmsg);		
+		MessageEventContent tmsg = new MessageEventContent(getSenderFromJson(json), message);
+		MessageEvent event = new MessageEvent(tmsg);		
 		this.publisher.publishEvent(event);	
 		LOGGER.debug("Event published {}", event);
 		return Mono.just(ResponseEntity.ok().body(event));		
