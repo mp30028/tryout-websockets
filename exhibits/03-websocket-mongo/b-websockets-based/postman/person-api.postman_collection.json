@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "aa23bd63-3948-4b52-b4ce-91cce9d3917f",
+		"name": "person-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11302915",
+		"_collection_link": "https://zonesoft.postman.co/workspace/prj-drongo~5d82a9bb-ae42-40d2-8bd3-594c077bbedc/collection/11302915-aa23bd63-3948-4b52-b4ce-91cce9d3917f?action=share&source=collection_link&creator=11302915"
+	},
+	"item": [
+		{
+			"name": "GET /api/person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/person/<ID>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/person/6736e9ba63c830301952477f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person",
+						"6736e9ba63c830301952477f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/person?id=<LIST_OF_IDs>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/person?id=6736eae24c6c363810dd6af9,6736e9ba63c830301952477f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6736eae24c6c363810dd6af9,6736e9ba63c830301952477f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/person?moniker=<MONIKER_TO_SEARCH>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/person?moniker=Mick",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person"
+					],
+					"query": [
+						{
+							"key": "moniker",
+							"value": "Mick"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"moniker\": \"Mick\",\r\n        \"firstname\": \"Michael\",\r\n        \"lastname\": \"JAGGER\",\r\n        \"gender\": \"MALE\",\r\n        \"otherNames\": [\r\n            {\r\n                \"value\": \"Philip\",\r\n                \"nameType\": \"MIDDLE_NAME\"\r\n            },\r\n            {\r\n                \"value\": \"Mick\",\r\n                \"nameType\": \"ALIAS\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/person",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/person/6736ef624c6c363810dd6afc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person",
+						"6736ef624c6c363810dd6afc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"moniker\": \"Mick\",\r\n        \"firstname\": \"Michael\",\r\n        \"lastname\": \"JAGGER\",\r\n        \"gender\": \"MALE\",\r\n        \"otherNames\": [\r\n            {\r\n                \"value\": \"Philip\",\r\n                \"nameType\": \"MIDDLE_NAME\"\r\n            },\r\n            {\r\n                \"value\": \"Mick\",\r\n                \"nameType\": \"ALIAS\"\r\n            }\r\n            ,\r\n            {\r\n                \"value\": \"Fatlips\",\r\n                \"nameType\": \"NICKNAME\"\r\n            } \r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/person/6736f93b4c6c363810dd6afd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"person",
+						"6736f93b4c6c363810dd6afd"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
