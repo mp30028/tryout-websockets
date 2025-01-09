@@ -20,17 +20,10 @@ import reactor.core.publisher.Flux;
 
 import java.util.Collections;
 import java.util.Map;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 @Configuration
 public class WebsocketConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(WebsocketConfig.class);
-	
-    @Bean
-    public Executor executor() {
-        return Executors.newSingleThreadExecutor();
-    }
 
     @Bean
     public HandlerMapping handlerMapping(WebSocketHandler wsh) {
