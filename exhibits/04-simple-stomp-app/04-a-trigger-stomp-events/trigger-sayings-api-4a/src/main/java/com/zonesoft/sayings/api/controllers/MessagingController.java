@@ -20,7 +20,7 @@ public class MessagingController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessagingController.class);
 	private static final Sayings sayings = new Sayings();
 	
-	@MessageMapping("/saying")
+	@MessageMapping("/trigger-saying")
 	@SendTo("/topic/sayings")	
 	public SayingMessage saying(String senderJson) throws Exception {
 		Saying saying = new Saying( String.join(": ", getSaying()));
