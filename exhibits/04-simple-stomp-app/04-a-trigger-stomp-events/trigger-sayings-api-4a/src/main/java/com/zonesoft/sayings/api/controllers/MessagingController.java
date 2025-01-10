@@ -34,7 +34,7 @@ public class MessagingController {
 		Map<String,Object> map = mapper.readValue(json, Map.class);
 		LOGGER.debug("json in request-body = {} mapped as {}",json, map);
 		return (map.containsKey("sender")) ? map.get("sender").toString() : "<sender-unavailable>"; 		 
-	}
+	}	
 	
 	private String[] getSaying(){
 		int startOfIndex = 0;

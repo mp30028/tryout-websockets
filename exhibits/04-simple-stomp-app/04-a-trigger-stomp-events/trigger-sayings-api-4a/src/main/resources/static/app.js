@@ -5,8 +5,9 @@ const stompClient = new StompJs.Client({
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/sayings', (greeting) => {
-        showGreeting(JSON.parse(greeting.body).saying.content);
+    stompClient.subscribe('/topic/sayings', (r) => {
+        showReceivedData(r.body);
+
     });
 };
 
@@ -23,12 +24,12 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
+        $("#dataReceivedArea").show();
     }
     else {
-        $("#conversation").hide();
+        $("#dataReceivedArea").hide();
     }
-    $("#greetings").html("");
+    $("#dataReceived").html("");
 }
 
 function connect() {
@@ -41,21 +42,23 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendName() {
-    stompClient.publish({
+function sendData() {
+	const dataToSendObject = {
         destination: "/app/trigger-saying",
-        body: JSON.stringify({"sender": "mp30028"})
-    });
+		body: $("#dataToSend").val()
+    }    
+    console.log({dataToSendObject});
+    stompClient.publish(dataToSendObject);
 }
 
-function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+function showReceivedData(message) {
+    $("#dataReceived").append("<tr><td><pre>" + JSON.stringify(JSON.parse(message),null,4) + "</pre></td></tr>");
 }
 
 $(function () {
     $("form").on('submit', (e) => e.preventDefault());
     $( "#connect" ).click(() => connect());
     $( "#disconnect" ).click(() => disconnect());
-    $( "#send" ).click(() => sendName());
+    $( "#sendData" ).click(() => sendData());
 });
 
