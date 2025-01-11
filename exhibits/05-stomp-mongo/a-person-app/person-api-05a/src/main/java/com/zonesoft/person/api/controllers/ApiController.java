@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zonesoft.person.api.entities.Person;
-//import com.zonesoft.person.api.events.DbEventContent;
 import com.zonesoft.person.api.services.PersonService;
 
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import reactor.core.publisher.Flux;
@@ -28,12 +26,12 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/person")
-public class PersonsController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PersonsController.class);
+public class ApiController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);
 	private final PersonService service;
     
 	@Autowired
-    public PersonsController(PersonService service) {
+    public ApiController(PersonService service) {
     	super();
     	this.service = service;
     }
@@ -109,11 +107,11 @@ public class PersonsController {
     
     @PutMapping("/{id}")
     public Mono<ResponseEntity<Person>> update(@PathVariable String id, @RequestBody Person person){
-    	LOGGER.debug("FROM PersonsController.update: id={}, person={}", id, person);
+    	LOGGER.debug("FROM ApiController.update: id={}, person={}", id, person);
     	person.setId(id);
         return service.update(person)
         		.map(updated -> {
-        			LOGGER.debug("FROM PersonsController.update: updatedPerson={}", updated);
+        			LOGGER.debug("FROM ApiController.update: updatedPerson={}", updated);
         			return updated;
         		})
                 .map( p -> ResponseEntity.accepted().body(p));
@@ -125,9 +123,4 @@ public class PersonsController {
                 .map( r -> ResponseEntity.accepted().<Void>build());
     }
     
-//    @GetMapping(value = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-//    public Flux<DbEventContent<Person>> events() {
-//        return service.events();
-//    }
-
 }

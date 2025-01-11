@@ -20,7 +20,7 @@ public class PersonService {
 	private final PersonRepository repository;
 	
 	@Autowired
-	public PersonService(PersonRepository repository/*, ReactiveMongoTemplate template, ApplicationEventPublisher  publisher*/) {
+	public PersonService(PersonRepository repository) {
 		this.repository = repository;
 	}
 	
