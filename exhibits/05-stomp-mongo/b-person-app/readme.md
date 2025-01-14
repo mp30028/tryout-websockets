@@ -1,5 +1,4 @@
 # 05-stomp-mongo/a-person-app
-This version of the app switches out websocket with stomp-over-websockets and creates a publishing end point in the messaging controller.  
-Everything else remains pretty much the same.  
+This version of the app uses stomp-over-websockets and removes the REST API completely and replaces it with Messaging-API.
+
   
-In the next version 05-stomp-mongo/b-person-app will replace the REST-API fully with a Messaging-API
