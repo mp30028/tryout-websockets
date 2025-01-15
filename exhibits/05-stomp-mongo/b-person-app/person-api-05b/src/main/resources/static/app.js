@@ -44,7 +44,7 @@ function disconnect() {
 
 function sendData() {
 	const dataToSendObject = {
-        destination: "/app/trigger-saying",
+        destination: "/app/person/insert",
 		body: $("#dataToSend").val()
     }    
     console.log({dataToSendObject});
