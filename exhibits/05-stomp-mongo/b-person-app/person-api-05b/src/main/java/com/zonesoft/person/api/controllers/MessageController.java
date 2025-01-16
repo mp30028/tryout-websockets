@@ -20,7 +20,7 @@ import com.zonesoft.person.api.events.DbEventContent;
 import com.zonesoft.person.api.services.PersonService;
 
 @Controller
-public class MessageController<T>{
+public class MessageController{
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 	private final ReactiveMongoTemplate mongoTemplate;
 	private final SimpMessagingTemplate messagingTemplate;
@@ -36,7 +36,6 @@ public class MessageController<T>{
 		
 	}
     
-	@SuppressWarnings("unchecked")
 	private void publishMongoEvents() {	
 		
 	    Consumer<ChangeStreamOptionsBuilder> optionsBuilderConsumer = ( (b) -> 
@@ -47,12 +46,12 @@ public class MessageController<T>{
         );
 	    	    
 		mongoTemplate
-				.changeStream((Class<T>) Object.class)
+				.changeStream(Person.class)
 				.withOptions(optionsBuilderConsumer)
 				.watchCollection("persons")
 				.listen()				
-				.map(e -> new DbEventContent<T>(e.getRaw(), (T) e.getBody() ))
-				.map(content -> new DbEvent<T>(content))
+				.map(e -> new DbEventContent<Person>(e.getRaw(), e.getBody() ))
+				.map(content -> new DbEvent<Person>(content))
 				.subscribe(event -> {
 					LOGGER.debug("converting and publishing to \"/topic/person/events\" the db-event {}", event);					
 					messagingTemplate.convertAndSend("/topic/person/events", event);
