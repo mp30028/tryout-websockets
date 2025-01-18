@@ -12,20 +12,20 @@ Basic steps are
 
 ### 1. Generate the keys using open-ssl
 `openssl rand -base64 -out example.key 756` <br/>
-![01-generate-keys](./images/01-generate-keys.png)
+![01-generate-keys](assets/mongo-01-generate-keys.png)
 
 ### 2. Update the docker-compose.yml 
 Two updates are needed<br/>
 **i.** volume mapping to make the keys are available to the containers<br/>
 **ii.** switch out the mongo commands when running first time<br/>
-![02-first-run-docker-compose](./images/02-first-run-docker-compose.png)<br/>
+![02-first-run-docker-compose](assets/mongo-02-first-run-docker-compose.png)<br/>
 
 ### 3. Startup mongodb first time to setup cluster
 **i.** select the folder where the docker compose file resides `cd <path_to_workspace>/framework/docker/mongodb`<br/>
-   ![03-select-docker-compose-file](./images/03-select-docker-compose-file.png)<br/>
+   ![03-select-docker-compose-file](assets/mongo-03-select-docker-compose-file.png)<br/>
    
 **ii.** run `docker compose up -d`
-   ![04-startup-mongo-first-time](./images/04-startup-mongo-first-time.png)
+   ![04-startup-mongo-first-time](assets/mongo-04-startup-mongo-first-time.png)
 
 ### 4. Change ownership and permissions on the key file from within the container
    
@@ -38,7 +38,7 @@ Two updates are needed<br/>
    
 ### 5. Create the mongodb user
 **i.** From within the container start up the mongosh, the interactive cli `mongosh`<br/>
-![06-startup-mongsh](./images/06-startup-mongsh.png)<br/>
+![06-startup-mongsh](assets/mongo-06-startup-mongsh.png)<br/>
 
 **ii.** Create the user in admin database<br/>
 ```bash
@@ -57,14 +57,14 @@ db.createUser(
 )
 ```
 When executing above, you will get prompted to provide a password<br/>
-![07-create-mongo-user](./images/07-create-mongo-user.png)
+![07-create-mongo-user](assets/mongo-07-create-mongo-user.png)
 
 ### 6. Shutdown the cluster
    6.1 exit the container
    6.2 `docker compose down`
    
 ### 7. Switch back the start up command in the docker compose file
-  ![08-switch-back-docker-compose-commands](./images/08-switch-back-docker-compose-commands.png)
+  ![08-switch-back-docker-compose-commands](assets/mongo-08-switch-back-docker-compose-commands.png)
 
 ### 8. start up the cluster
    (See 3.above)
