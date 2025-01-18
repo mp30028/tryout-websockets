@@ -1,4 +1,6 @@
-# Project tryout-websockets
+[documentation site](https://mp30028.github.io/tryout-websockets/)
+
+# Project Overview
 
 A key part of an event driven application design with microservices is sending/triggering and recieving events securely and efficiently. STOMP (**S**treaming **T**ext-**O**rientated **M**essaging **P**rotocol) is a message format protocol often used with websockets to send and receive messages between pariticipating services and layers. The illustration shows the kind of architecture often built and used.  
   
