@@ -7,10 +7,16 @@
 
 ## Docker
 Contains docker compose projects to start up databases
-### [Setting up MongoDb](docker/mongodb/readme.md)
-MongoDb has to be setup as a cluster to be able to leverage the change-stream feature which is needed to capture data changes as events in a java application. The docker compose project does this, but to have a secure setup makes the setup a little convoluted.
+
+## Exhibits
+The folder contains a graded set of projects to explore and develop a particular aspect towards building the objective as given in the [Project Overview](../README.md)
   
+![readme-diagrams-exhibits-folder](./assets/readme-diagrams-exhibits-folder.png)  
+
+## [Setting up MongoDb](docker/mongodb/readme.md)
+MongoDb has to be setup as a cluster to be able to leverage the change-stream feature which is needed to capture data changes as events in a java application. The docker compose project does this, but to secure it the setup is a little convoluted and requires some one time manual steps.
   
+
   
 ## Resources and references
 
