@@ -80,7 +80,7 @@ public class ApiController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<Person>> findById(@PathVariable("id") String id){
+    public Mono<ResponseEntity<Person>> findById(@PathVariable String id){
         Mono<Person> personMono = service.findById(id);
         return personMono.map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -106,7 +106,7 @@ public class ApiController {
     }
     
     @PutMapping("/{id}")
-    public Mono<ResponseEntity<Person>> update(@PathVariable("id") String id, @RequestBody Person person){
+    public Mono<ResponseEntity<Person>> update(@PathVariable String id, @RequestBody Person person){
     	LOGGER.debug("FROM ApiController.update: id={}, person={}", id, person);
     	person.setId(id);
         return service.update(person)
@@ -118,7 +118,8 @@ public class ApiController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<ResponseEntity<Void>> deleteById(@PathVariable("id") String id){
+    public Mono<ResponseEntity<Void>> deleteById(@PathVariable String id){
+    	LOGGER.debug("FROM ApiController.delete: id={}", id);
         return service.deleteById(id)
                 .map( r -> ResponseEntity.accepted().<Void>build());
     }
