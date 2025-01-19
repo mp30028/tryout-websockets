@@ -15,11 +15,11 @@
 		<module>06a-calendar-service</module>
 	</modules>
 	<dependencies>
-		<dependency>
-			<groupId>com.zonesoft</groupId>
-			<artifactId>06a-persons-lib</artifactId>
-			<version>0.0.1-SNAPSHOT</version>			
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.zonesoft</groupId>-->
+<!--			<artifactId>06a-persons-lib</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>			-->
+<!--		</dependency>-->
 	</dependencies>	
 	<build>
 		<plugins>

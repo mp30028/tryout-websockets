@@ -119,6 +119,7 @@ public class ApiController {
 
     @DeleteMapping("/{id}")
     public Mono<ResponseEntity<Void>> deleteById(@PathVariable String id){
+    	LOGGER.debug("FROM ApiController.delete: id={}", id);
         return service.deleteById(id)
                 .map( r -> ResponseEntity.accepted().<Void>build());
     }
