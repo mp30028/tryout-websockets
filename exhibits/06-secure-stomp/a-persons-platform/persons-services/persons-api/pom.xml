@@ -8,9 +8,9 @@
 	</parent>  
 	
     <groupId>com.zonesoft</groupId>
-    <artifactId>person-api-05b</artifactId>
+    <artifactId>06a-persons-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-  	<name>person-api-05b</name>
+  	<name>06a-persons-api</name>
   	<description>Web services to manage people based on mongo and stomp over websockets</description>
 	
 	<properties>
