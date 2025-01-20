@@ -11,13 +11,9 @@ public class SpringCloudConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-        		.route("persons-api", r -> r.path("/persons/api/**").uri("http://localhost:7075"))
+        		.route("person-api", r -> r.path("/person/api/**").uri("http://localhost:7075"))
+        		.route("person-websocket", r -> r.path("person-api-websocket/**").uri("ws://localhost:7075"))        		
         		.route("default-route", r -> r.path("/**").uri("http://localhost:7075"))
-//        		.route("hello-world-ui", r -> r.path("/hello-world/ui/**").uri("http://localhost:8111"))
-//                .route("hello-world-api-greeting", r -> r.path("/hello-world/api/greeting/**").uri("http://localhost:8112"))
-//                .route("hello-world-api-calendar", r -> r.path("/hello-world/api/calendar/**").uri("http://localhost:8114"))
-//                .route("hello-world-api-clock", r -> r.path("/hello-world/api/clock/**").uri("http://localhost:8113"))
-//                .route("default-route", r -> r.path("/**").uri("http://localhost:8111"))
                 .build();
     }
 
