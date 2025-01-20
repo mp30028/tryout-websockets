@@ -1,6 +1,8 @@
 package com.zonesoft.person.api.services;
 
 import java.util.List;
+
+//import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +63,10 @@ public class PersonService {
 	public Mono<Void> deleteById(String id){
 		return repository.deleteById(id);
     }
+	
+	public Mono<Void> delete(Person person){		
+		return repository.delete(person);
+    }	
 	
 	public Flux<Person> findByMoniker(String moniker){
     	return repository.findByMoniker(moniker);
