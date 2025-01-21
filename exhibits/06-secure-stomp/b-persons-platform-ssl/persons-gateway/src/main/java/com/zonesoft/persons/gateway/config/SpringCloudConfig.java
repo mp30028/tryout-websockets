@@ -11,10 +11,10 @@ public class SpringCloudConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-        		.route("person-api", r -> r.path("/person/api/**").uri("http://localhost:7075"))
-        		.route("person-websocket", r -> r.path("person-api-websocket/**").uri("ws://localhost:7075"))
-        		.route("person-ui", r -> r.path("/front-end/person/ui/**").uri("http://localhost:7999"))
-        		.route("default-route", r -> r.path("/**").uri("http://localhost:7075"))
+        		.route("person-api", r -> r.path("/person/api/**").uri("https://localhost:7075"))
+        		.route("person-websocket", r -> r.path("person-api-websocket/**").uri("wss://localhost:7075"))
+        		.route("person-ui", r -> r.path("/front-end/person/ui/**").uri("https://localhost:7999"))
+        		.route("default-route", r -> r.path("/**").uri("https://localhost:7075"))
                 .build();
     }
 
