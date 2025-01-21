@@ -90,10 +90,10 @@ public class MessageController{
     	return service.update(person).as((m)-> m.block());
     }	
 	
-	@MessageMapping("/person/delete-by-id")
-	@SendTo("/topic/person/delete-by-id")
-    public String deleteById(String id){
-    	return service.deleteById(id).thenReturn(id).as((m)-> m.block());		
+	@MessageMapping("/person/delete")
+	@SendTo("/topic/person/delete")
+    public Person delete(Person person){
+    	return service.delete(person).thenReturn(person).as((m)-> m.block());
     }
 
 }
