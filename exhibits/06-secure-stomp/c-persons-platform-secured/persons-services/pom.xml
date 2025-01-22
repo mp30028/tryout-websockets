@@ -15,12 +15,43 @@
 		<module>06c-calendar-service</module>
 	</modules>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
+		
 <!--		<dependency>-->
 <!--			<groupId>com.zonesoft</groupId>-->
 <!--			<artifactId>06a-persons-lib</artifactId>-->
 <!--			<version>0.0.1-SNAPSHOT</version>			-->
-<!--		</dependency>-->
+<!--		</dependency>-->		
 	</dependencies>	
+	
 	<build>
 		<plugins>
 			<plugin>
