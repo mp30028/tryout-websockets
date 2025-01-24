@@ -5,8 +5,12 @@
     <artifactId>06d-persons-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>06d-persons-lib</artifactId>
+  <artifactId>06d-persons-libs</artifactId>
+  <name>06d-persons-libs</name>
+  <description>Parent of reusable utilties packaged as static libraries</description>
   <packaging>pom</packaging>
-  <name>06d-persons-lib</name>
-  <description>Library used by the persons platform</description>
+	<modules>
+		<module>06d-persons-gen-utils</module>
+		<module>06d-persons-kc-utils</module>
+	</modules>  
 </project>

@@ -16,7 +16,7 @@
   <description>Parent module of the modular suite of applications for the messaging based persons platform</description>	
 	<modules>
 		<module>06d-persons-ui</module>
-		<module>06d-persons-lib</module>
+		<module>06d-persons-libs</module>
 		<module>06d-persons-services</module>
 		<module>06d-persons-gateway</module>
 	</modules>

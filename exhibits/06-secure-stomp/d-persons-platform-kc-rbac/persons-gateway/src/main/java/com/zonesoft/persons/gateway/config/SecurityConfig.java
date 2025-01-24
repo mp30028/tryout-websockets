@@ -29,7 +29,7 @@ public class SecurityConfig {
 	@Bean
 	public ServerLogoutSuccessHandler keycloakLogoutSuccessHandler(ReactiveClientRegistrationRepository repository) {
 		OidcClientInitiatedServerLogoutSuccessHandler oidcLogoutSuccessHandler = new OidcClientInitiatedServerLogoutSuccessHandler(repository);
-		oidcLogoutSuccessHandler.setPostLogoutRedirectUri("{baseUrl}/hello-world/ui");
+		oidcLogoutSuccessHandler.setPostLogoutRedirectUri("{baseUrl}/person/ui/");
 		return oidcLogoutSuccessHandler;
 	}
 	

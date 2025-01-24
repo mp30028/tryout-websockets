@@ -22,7 +22,7 @@
     	<div id="main-content">
     	        <div class="form-group">
                     <label for="brokerUrlInput">Websocket broker URL</label>
-                    <input type="text" id="brokerUrlInput" class="form-control"  value="ws://localhost:7075/person-api-websocket">
+                    <input type="text" id="brokerUrlInput" class="form-control"  value="wss://localhost:7070/person-api-websocket">
                 </div>
     	        <div class="form-group">
                     <label for="eventsTopicInput">Topic to subscribe for events</label>
@@ -37,12 +37,12 @@
 
     	        <div class="form-group">
                     <label for="sendToTopic">Topic to send data to</label>
-                    <input type="text" id="sendToTopic" class="form-control"  value="/app/person/insert">
+                    <input type="text" id="sendToTopic" class="form-control"  value="/app/person/get-all">
                 </div>
     	        
     	        <div class="form-group">
                     <label for="receiveFromTopic">Topic to receive data from</label>
-                    <input type="text" id="receiveFromTopic" class="form-control"  value="/topic/person/insert">
+                    <input type="text" id="receiveFromTopic" class="form-control"  value="/topic/person/get-all">
                 </div>
                                 
                 <div class="form-group">

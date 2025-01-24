@@ -11,8 +11,8 @@
   <description>Services used by the persons platform</description>
 	<modules>
 		<module>06d-persons-api</module>
-		<module>06d-clock-service</module>
-		<module>06d-calendar-service</module>
+<!--		<module>06d-clock-service</module>-->
+<!--		<module>06d-calendar-service</module>-->
 	</modules>
 	<dependencies>
 		<dependency>
@@ -38,18 +38,25 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
 		
-<!--		<dependency>-->
-<!--			<groupId>com.zonesoft</groupId>-->
-<!--			<artifactId>06a-persons-lib</artifactId>-->
-<!--			<version>0.0.1-SNAPSHOT</version>			-->
-<!--		</dependency>-->		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>com.zonesoft</groupId>
+			<artifactId>06d-persons-kc-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>			
+		</dependency>						
 	</dependencies>	
 	
 	<build>
