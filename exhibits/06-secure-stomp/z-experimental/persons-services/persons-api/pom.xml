@@ -2,14 +2,14 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.zonesoft</groupId>
-    <artifactId>06alpha-persons-services</artifactId>
+    <artifactId>06z-persons-services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent> 
 	
     <groupId>com.zonesoft</groupId>
-    <artifactId>06alpha-persons-api</artifactId>
+    <artifactId>06z-persons-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-  	<name>06alpha-persons-api</name>
+  	<name>06z-persons-api</name>
   	<description>Web services to manage people based on mongo and stomp over websockets</description>
 	
 <!--	<properties>-->

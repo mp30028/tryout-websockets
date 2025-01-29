@@ -2,17 +2,17 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.zonesoft</groupId>
-    <artifactId>06alpha-persons-platform</artifactId>
+    <artifactId>06z-persons-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>06alpha-persons-services</artifactId>
+  <artifactId>06z-persons-services</artifactId>
   <packaging>pom</packaging>
-  <name>06alpha-persons-services</name>
+  <name>06z-persons-services</name>
   <description>Services used by the persons platform</description>
 	<modules>
-		<module>06alpha-persons-api</module>
-<!--		<module>06alphaclock-service</module>-->
-<!--		<module>06alphacalendar-service</module>-->
+		<module>06z-persons-api</module>
+<!--		<module>06z-clock-service</module>-->
+<!--		<module>06z-calendar-service</module>-->
 	</modules>
 	<dependencies>
 		<dependency>
@@ -54,14 +54,9 @@
 		</dependency>		
 		<dependency>
 			<groupId>com.zonesoft</groupId>
-			<artifactId>06alpha-persons-kc-utils</artifactId>
+			<artifactId>06z-persons-kc-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>			
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-messaging</artifactId>
-		</dependency>
-
+		</dependency>						
 	</dependencies>	
 	
 	<build>

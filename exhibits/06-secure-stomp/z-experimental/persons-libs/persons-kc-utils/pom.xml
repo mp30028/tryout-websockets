@@ -2,18 +2,18 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.zonesoft</groupId>
-    <artifactId>06alpha-persons-libs</artifactId>
+    <artifactId>06z-persons-libs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath/>
   </parent>
-  <artifactId>06alpha-persons-kc-utils</artifactId>
-  <name>06alpha-persons-kc-utils</name>
+  <artifactId>06z-persons-kc-utils</artifactId>
+  <name>06z-persons-kc-utils</name>
   <description>Reusable utilties to support Keycloak integration</description>
   <packaging>jar</packaging> 
 	<dependencies>
 		<dependency>
 			<groupId>com.zonesoft</groupId>
-			<artifactId>06alpha-persons-gen-utils</artifactId>
+			<artifactId>06z-persons-gen-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>			
 		</dependency>
 		<dependency>

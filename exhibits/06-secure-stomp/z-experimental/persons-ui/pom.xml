@@ -2,11 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.zonesoft</groupId>
-    <artifactId>06alpha-persons-platform</artifactId>
+    <artifactId>06z-persons-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-	<artifactId>06alpha-persons-ui</artifactId>
-  	<name>06alpha-persons-ui</name>
+	<artifactId>06z-persons-ui</artifactId>
+  	<name>06z-persons-ui</name>
   	<description>Simple UI to exercise the messaging API</description>
 	<dependencies>
         <dependency>
@@ -27,7 +27,7 @@
         </dependency>
 		<dependency>
 			<groupId>com.zonesoft</groupId>
-			<artifactId>06alpha-persons-kc-utils</artifactId>
+			<artifactId>06z-persons-kc-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>			
 		</dependency>						
 	</dependencies>			
