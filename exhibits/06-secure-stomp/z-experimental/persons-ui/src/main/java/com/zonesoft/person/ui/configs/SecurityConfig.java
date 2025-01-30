@@ -7,11 +7,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import com.zonesoft.persons.kc.utils.KeycloakRolesConverter;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -19,10 +21,9 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
 //                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
-//                        .requestMatchers("/", "/hello-world/api/calendar/home").permitAll()
-//                        .requestMatchers("/hello-world/api/calendar/get-date").hasAnyAuthority("HELLO_WORLD_USER","HELLO_WORLD_ADMIN")
-//                        .requestMatchers("/hello-world/api/calendar/info").hasAuthority("HELLO_WORLD_ADMIN")
-                        .anyRequest().authenticated()
+                		.requestMatchers("/", "/index.html").hasAnyAuthority("PERSONS_PLATFORM_ADMIN", "PERSONS_PLATFORM_USER")
+                		.requestMatchers("/event-viewer.html").hasAuthority("PERSONS_PLATFORM_ADMIN")
+                		.anyRequest().authenticated()
                 );
 
 		http.oauth2ResourceServer(oauth2 -> oauth2
