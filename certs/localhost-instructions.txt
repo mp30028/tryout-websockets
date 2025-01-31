@@ -1,0 +1,10 @@
+Run the following command to generate certificates configured in localhost-cer.config file
+
+openssl req -config /mnt/g/tmp/localhost-self-signed-certs/localhost-cert.config -newkey rsa -x509 -days 3650 -out /mnt/g/tmp/localhost-self-signed-certs/localhost.crt -keyout /mnt/g/tmp/localhost-self-signed-certs/localhost.key
+
+
+Convert the crt file to p12 format for use with Java. Note the export password requested was kept blank
+openssl pkcs12 -export -out /mnt/g/tmp/localhost-self-signed-certs/localhost.p12 -inkey /mnt/g/tmp/localhost-self-signed-certs/localhost.key -in /mnt/g/tmp/localhost-self-signed-certs/localhost.crt
+
+export password used 
+alligator*001

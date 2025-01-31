@@ -54,8 +54,8 @@ services:
     networks:
       - kc_back_tier
     volumes:
-      - ${HOST_CERTIFICATE_FILE:-../../certs/keycloak.crt}:${CERTIFICATE_FILE:-/certs/keycloak.crt}
-      - ${HOST_CERTIFICATE_KEY_FILE:-../../certs/keycloak.key}:${CERTIFICATE_KEY_FILE:-/certs/keycloak.key}
+      - ${HOST_CERTIFICATE_FILE:-../../certs/localhost.crt}:${CERTIFICATE_FILE:-/certs/keycloak.crt}
+      - ${HOST_CERTIFICATE_KEY_FILE:-../../certs/localhost.key}:${CERTIFICATE_KEY_FILE:-/certs/keycloak.key}
       - ${HOST_REALM_DATA_FOLDER:-./exported-realms}:${REALM_DATA_FOLDER:-/exported-realms}
     ports:
       - ${KC_HTTPS_PORT:-4499}:${KC_HTTPS_PORT:-4499}
